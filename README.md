@@ -1,19 +1,6 @@
-# AutoMaxKB
-
-<p align="center">
-  <img src="https://github.com/yourusername/automaxkb/assets/your-asset-id/automaxkb-logo.png" alt="AutoMaxKB" width="300" />
-</p>
+<h3 align="center"># AutoMaxKB
 
 <h3 align="center">AI-Powered Automated Shipping Coordination Platform</h3>
-
-<p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.html#license-text"><img src="https://img.shields.io/github/license/yourusername/automaxkb?color=%231890FF" alt="License: GPL v3"></a>
-  <a href="https://github.com/yourusername/automaxkb/releases/latest"><img src="https://img.shields.io/github/v/release/yourusername/automaxkb" alt="Latest release"></a>
-  <a href="https://github.com/yourusername/automaxkb"><img src="https://img.shields.io/github/stars/yourusername/automaxkb?color=%231890FF&style=flat-square" alt="Stars"></a>
-  <a href="https://hub.docker.com/r/yourdockerhub/automaxkb"><img src="https://img.shields.io/docker/pulls/yourdockerhub/automaxkb?label=downloads" alt="Download"></a>
-</p>
-
----
 
 ## Overview
 
