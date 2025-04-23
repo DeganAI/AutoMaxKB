@@ -1,6 +1,5 @@
 # AutoMaxKB 
-
-<h3 align="center">AI-Powered Automated Shipping Coordination Platform</h3>
+AI-Powered Automated Shipping Coordination Platform</h3>
 
 ## Overview
 
