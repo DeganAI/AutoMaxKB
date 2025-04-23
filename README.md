@@ -3,7 +3,9 @@ AI-Powered Automated Shipping Coordination Platform</h3>
 
 ## Overview
 
-AutoMaxKB = Max Knowledge Brain, it is a powerful and easy-to-use AI assistant that integrates Retrieval-Augmented Generation (RAG) pipelines, this creates a powerful AI-driven shipping coordination platform that seamlessly integrates with communication and CRM tools to automate shipping workflows. Built as a fork of the [MaxKB](https://github.com/1Panel-dev/MaxKB) project, AutoMaxKB transforms MaxKB's RAG capabilities into a specialized solution for shipping and logistics management.
+MaxKB = Max Knowledge Brain, it is a powerful AI assistant that integrates Retrieval-Augmented Generation (RAG) pipelines,
+
+AutoMaxKB = Powerful AI-driven shipping coordination platform that seamlessly integrates with communication and CRM tools to automate shipping workflows. Built as a fork of the [MaxKB](https://github.com/1Panel-dev/MaxKB) project, AutoMaxKB transforms MaxKB's RAG capabilities into a specialized solution for shipping and logistics management.
 
 ## Key Features
 
