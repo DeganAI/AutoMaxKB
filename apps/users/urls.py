@@ -1,9 +1,12 @@
+# urls.py for integration webhooks
 from django.urls import path
+from .integrations.views import dialpad_webhook, slack_webhook, batscrm_webhook
 
-from . import views
-
-app_name = "user"
 urlpatterns = [
+    path('webhooks/dialpad/', dialpad_webhook, name='dialpad_webhook'),
+    path('webhooks/slack/', slack_webhook, name='slack_webhook'),
+    path('webhooks/batscrm/', batscrm_webhook, name='batscrm_webhook'),
+]
     path('profile', views.Profile.as_view()),
     path('user', views.User.as_view(), name="profile"),
     path('user/language', views.SwitchUserLanguageView.as_view(), name='language'),
