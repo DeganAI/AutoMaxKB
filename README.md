@@ -1,129 +1,193 @@
-<p align="center"><img src= "https://github.com/1Panel-dev/maxkb/assets/52996290/c0694996-0eed-40d8-b369-322bf2a380bf" alt="MaxKB" width="300" /></p>
-<h3 align="center">An Open-Source AI Assistant for Enterprise</h3>
-<p align="center"><a href="https://trendshift.io/repositories/9113" target="_blank"><img src="https://trendshift.io/api/badge/repositories/9113" alt="1Panel-dev%2FMaxKB | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a></p>
+# AutoMaxKB
+
 <p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.html#license-text"><img src="https://img.shields.io/github/license/1Panel-dev/maxkb?color=%231890FF" alt="License: GPL v3"></a>
-  <a href="https://github.com/1Panel-dev/maxkb/releases/latest"><img src="https://img.shields.io/github/v/release/1Panel-dev/maxkb" alt="Latest release"></a>
-  <a href="https://github.com/1Panel-dev/maxkb"><img src="https://img.shields.io/github/stars/1Panel-dev/maxkb?color=%231890FF&style=flat-square" alt="Stars"></a>    
-  <a href="https://hub.docker.com/r/1panel/maxkb"><img src="https://img.shields.io/docker/pulls/1panel/maxkb?label=downloads" alt="Download"></a><br/>
- [<a href="/README_CN.md">中文(简体)</a>] | [<a href="/README.md">English</a>] 
+  <img src="https://github.com/yourusername/automaxkb/assets/your-asset-id/automaxkb-logo.png" alt="AutoMaxKB" width="300" />
 </p>
-<hr/>
 
-MaxKB = Max Knowledge Brain, it is a powerful and easy-to-use AI assistant that integrates Retrieval-Augmented Generation (RAG) pipelines, supports robust workflows, and provides advanced MCP tool-use capabilities. MaxKB is widely applied in scenarios such as intelligent customer service, corporate internal knowledge bases, academic research, and education.
+<h3 align="center">AI-Powered Automated Shipping Coordination Platform</h3>
 
-- **RAG Pipeline**: Supports direct uploading of documents / automatic crawling of online documents, with features for automatic text splitting, vectorization. This effectively reduces hallucinations in large models, providing a superior smart Q&A interaction experience.
-- **Agentic Workflow**: Equipped with a powerful workflow engine, function library and MCP tool-use, enabling the orchestration of AI processes to meet the needs of complex business scenarios. 
-- **Seamless Integration**: Facilitates zero-coding rapid integration into third-party business systems, quickly equipping existing systems with intelligent Q&A capabilities to enhance user satisfaction.
-- **Model-Agnostic**: Supports various large models, including private models (such as DeepSeek, Llama, Qwen, etc.) and public models (like OpenAI, Claude, Gemini, etc.).
-- **Multi Modal**: Native support for input and output text, image, audio and video.
+<p align="center">
+  <a href="https://www.gnu.org/licenses/gpl-3.0.html#license-text"><img src="https://img.shields.io/github/license/yourusername/automaxkb?color=%231890FF" alt="License: GPL v3"></a>
+  <a href="https://github.com/yourusername/automaxkb/releases/latest"><img src="https://img.shields.io/github/v/release/yourusername/automaxkb" alt="Latest release"></a>
+  <a href="https://github.com/yourusername/automaxkb"><img src="https://img.shields.io/github/stars/yourusername/automaxkb?color=%231890FF&style=flat-square" alt="Stars"></a>
+  <a href="https://hub.docker.com/r/yourdockerhub/automaxkb"><img src="https://img.shields.io/docker/pulls/yourdockerhub/automaxkb?label=downloads" alt="Download"></a>
+</p>
 
-## Quick start
+---
 
-Execute the script below to start a MaxKB container using Docker:
+## Overview
+
+AutoMaxKB is a powerful AI-driven shipping coordination platform that seamlessly integrates with communication and CRM tools to automate shipping workflows. Built as a fork of the [MaxKB](https://github.com/1Panel-dev/MaxKB) project, AutoMaxKB transforms MaxKB's RAG capabilities into a specialized solution for shipping and logistics management.
+
+## Key Features
+
+- **Multi-Platform Integration**: Connect with Dialpad (voice/calls), Slack (team messaging), and BatsCRM (customer management) to create a unified shipping coordination experience.
+
+- **Intelligent Shipping Management**: Leverage RAG (Retrieval-Augmented Generation) and LLMs to automate shipping status updates, quote generation, and logistics coordination.
+
+- **Automated Workflow Engine**: Handle the entire shipping process from inquiry to delivery with predefined and customizable workflows.
+
+- **Contextual Understanding**: Process natural language queries about shipping statuses, create new shipments, and update existing ones across all integrated platforms.
+
+- **Shipping Knowledge Base**: Built-in shipping terminology, carrier information, and logistics best practices to provide accurate responses.
+
+## Integration Capabilities
+
+### Dialpad Integration
+
+- Process call transcripts for shipping inquiries
+- Automatically extract shipping information from voice conversations
+- Send shipping updates and tracking information via SMS or call
+
+### Slack Integration
+
+- Respond to shipping inquiries in channels or direct messages
+- Provide shipping status updates with rich formatting
+- Create shipping requests directly from Slack conversations
+
+### BatsCRM Integration 
+
+- Sync customer shipping information between systems
+- Automatically update customer records with shipping statuses
+- Generate shipping documentation directly from customer information
+
+## Quick Start
+
+Execute the script below to start an AutoMaxKB container using Docker:
 
 ```bash
-docker run -d --name=maxkb --restart=always -p 8080:8080 -v ~/.maxkb:/var/lib/postgresql/data -v ~/.python-packages:/opt/maxkb/app/sandbox/python-packages 1panel/maxkb
+docker run -d --name=automaxkb --restart=always \
+  -p 8080:8080 \
+  -v ~/.automaxkb:/var/lib/postgresql/data \
+  -v ~/.python-packages:/opt/maxkb/app/sandbox/python-packages \
+  -e DIALPAD_API_KEY=your_dialpad_api_key \
+  -e SLACK_BOT_TOKEN=your_slack_bot_token \
+  -e BATSCRM_API_KEY=your_batscrm_api_key \
+  yourdockerhub/automaxkb
 ```
 
-Access MaxKB web interface at `http://your_server_ip:8080` with default admin credentials:
+Alternatively, use Docker Compose:
 
-- username: admin
-- password: MaxKB@123..
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/automaxkb.git
+cd automaxkb
 
-中国用户如遇到 Docker 镜像 Pull 失败问题，请参照该 [离线安装文档](https://maxkb.cn/docs/installation/offline_installtion/) 进行安装。
+# Create .env file with your API keys
+cp .env.example .env
+# Edit the .env file with your API credentials
 
-## Screenshots
+# Start the containers
+docker compose up -d
+```
 
-<table style="border-collapse: collapse; border: 1px solid black;">
-  <tr>
-    <td style="padding: 5px;background-color:#fff;"><img src= "https://maxkb.hk/images/overview.png" alt="MaxKB Demo1"   /></td>
-    <td style="padding: 5px;background-color:#fff;"><img src= "https://maxkb.hk/images/screenshot-models.png" alt="MaxKB Demo2"   /></td>
-  </tr>
-  <tr>
-    <td style="padding: 5px;background-color:#fff;"><img src= "https://maxkb.hk/images/screenshot-knowledge.png" alt="MaxKB Demo3"   /></td>
-    <td style="padding: 5px;background-color:#fff;"><img src= "https://maxkb.hk/images/screenshot-function.png" alt="MaxKB Demo4"   /></td>
-  </tr>
-</table>
+Access the AutoMaxKB web interface at `http://your_server_ip:8080` with default admin credentials:
 
-## Technical stack
+- Username: admin
+- Password: AutoMaxKB@123..
 
-- Frontend：[Vue.js](https://vuejs.org/)
-- Backend：[Python / Django](https://www.djangoproject.com/)
-- LLM Framework：[LangChain](https://www.langchain.com/)
-- Database：[PostgreSQL + pgvector](https://www.postgresql.org/)
+## Configuration
 
-## Feature Comparison
+### Environment Variables
 
-MaxKB is positioned as an Ready-to-use RAG (Retrieval-Augmented Generation) intelligent Q&A application, rather than a middleware platform for building large model applications. The following table is merely a comparison from a functional perspective.
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `DIALPAD_API_KEY` | Dialpad API authentication key | Yes, for Dialpad integration |
+| `DIALPAD_WEBHOOK_URL` | URL for Dialpad webhook callbacks | Yes, for Dialpad integration |
+| `DIALPAD_TEAM_ID` | Dialpad team identifier | Yes, for Dialpad integration |
+| `SLACK_BOT_TOKEN` | Slack bot authentication token | Yes, for Slack integration |
+| `SLACK_SIGNING_SECRET` | Secret for validating Slack requests | Yes, for Slack integration |
+| `SLACK_APP_TOKEN` | Slack application token | Yes, for Slack integration |
+| `BATSCRM_API_KEY` | BatsCRM API authentication key | Yes, for BatsCRM integration |
+| `BATSCRM_BASE_URL` | Base URL for BatsCRM API | Yes, for BatsCRM integration |
+| `BATSCRM_WEBHOOK_SECRET` | Secret for validating BatsCRM webhooks | Yes, for BatsCRM integration |
 
-<table style="width: 100%;">
-  <tr>
-    <th align="center">Feature</th>
-    <th align="center">LangChain</th>
-    <th align="center">Dify.AI</th>
-    <th align="center">Flowise</th>
-    <th align="center">MaxKB <br>（Built upon LangChain）</th>
-  </tr>
-  <tr>
-    <td align="center">Supported LLMs</td>
-    <td align="center">Rich Variety</td>
-    <td align="center">Rich Variety</td>
-    <td align="center">Rich Variety</td>
-    <td align="center">Rich Variety</td>
-  </tr>
-  <tr>
-    <td align="center">RAG Engine</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td align="center">Agent</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td align="center">Workflow</td>
-    <td align="center">❌</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td align="center">Observability</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td align="center">SSO/Access control</td>
-    <td align="center">❌</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">✅ (Pro)</td>
-  </tr>
-  <tr>
-    <td align="center">On-premise Deployment</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-</table>
+### Platform Setup
 
-## Star History
+#### Dialpad Setup
 
-[![Star History Chart](https://api.star-history.com/svg?repos=1Panel-dev/MaxKB&type=Date)](https://star-history.com/#1Panel-dev/MaxKB&Date)
+1. Create a Dialpad API application at https://developers.dialpad.com/
+2. Configure webhook URL to point to your AutoMaxKB instance: `https://your-domain.com/webhooks/dialpad/`
+3. Enable necessary scopes for call transcripts and messaging
+
+#### Slack Setup
+
+1. Create a Slack App at https://api.slack.com/apps
+2. Add Bot Token Scopes: `chat:write`, `im:history`, `channels:history`
+3. Enable Event Subscriptions and point to webhook URL: `https://your-domain.com/webhooks/slack/`
+4. Subscribe to events: `message.channels`, `message.im`
+
+#### BatsCRM Setup
+
+1. Generate API credentials in your BatsCRM admin portal
+2. Configure webhook URL in BatsCRM: `https://your-domain.com/webhooks/batscrm/`
+3. Enable necessary notification events for shipping-related activities
+
+## Technical Architecture
+
+AutoMaxKB enhances MaxKB's core architecture with specialized shipping coordination services:
+
+- **Frontend**: Vue.js-based dashboard for configuration and monitoring
+- **Backend**: Python/Django with custom integration services
+- **LLM Framework**: LangChain with shipping-specific prompts and tools
+- **Database**: PostgreSQL + pgvector for storing shipping data with semantic search
+- **Integration Layer**: Custom webhook handlers and API clients for third-party services
+
+## Development and Customization
+
+### Adding New Shipping Carriers
+
+```python
+# Example for adding a new carrier integration
+from apps.shipping.carriers.base import BaseCarrierService
+
+class NewCarrierService(BaseCarrierService):
+    def get_tracking_status(self, tracking_number):
+        # Implementation for specific carrier API
+        pass
+        
+    def generate_label(self, shipment_data):
+        # Implementation for generating shipping labels
+        pass
+```
+
+### Customizing Shipping Workflows
+
+Workflows can be customized through the web interface or by editing workflow definition files:
+
+```yaml
+workflow:
+  name: "Express Shipping Processing"
+  triggers:
+    - source: "slack"
+      event: "message.express_shipping"
+  steps:
+    - name: "Validate Address"
+      action: "shipping.validate_address"
+    - name: "Generate Quote"
+      action: "shipping.generate_quote"
+    - name: "Create Shipment"
+      action: "shipping.create_shipment"
+    - name: "Notify Customer"
+      action: "notifications.send_confirmation"
+```
+
+## Contributing
+
+We welcome contributions to AutoMaxKB! To contribute:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ## License
 
-Licensed under The GNU General Public License version 3 (GPLv3)  (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+AutoMaxKB is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
-<https://www.gnu.org/licenses/gpl-3.0.html>
+## Acknowledgments
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+- [MaxKB](https://github.com/1Panel-dev/MaxKB) project for the core RAG engine
+- [LangChain](https://www.langchain.com/) for LLM orchestration
+- Community contributors and testers
