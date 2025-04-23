@@ -1,4 +1,4 @@
-<h3 align="center"># AutoMaxKB
+# AutoMaxKB 
 
 <h3 align="center">AI-Powered Automated Shipping Coordination Platform</h3>
 
