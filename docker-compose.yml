@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  automaxkb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: automaxkb
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - automaxkb-data:/var/lib/postgresql/data
+      - python-packages:/opt/maxkb/app/sandbox/python-packages
+    environment:
+      - DIALPAD_API_KEY=${DIALPAD_API_KEY}
+      - DIALPAD_WEBHOOK_URL=${DIALPAD_WEBHOOK_URL}
+      - DIALPAD_TEAM_ID=${DIALPAD_TEAM_ID}
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - BATSCRM_API_KEY=${BATSCRM_API_KEY}
+      - BATSCRM_BASE_URL=${BATSCRM_BASE_URL}
+      - BATSCRM_WEBHOOK_SECRET=${BATSCRM_WEBHOOK_SECRET}
+
+volumes:
+  automaxkb-data:
+  python-packages:
