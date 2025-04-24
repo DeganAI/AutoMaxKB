@@ -1,4 +1,4 @@
-FROM 1panel/maxkb:latest
+FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /opt/maxkb
@@ -13,15 +13,33 @@ ENV PYTHONPATH=/opt/maxkb/app
 ENV PYTHONUNBUFFERED=1
 ENV TZ=UTC
 
-# Install additional dependencies
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    postgresql-client \
+    libpq-dev \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
 RUN pip install --no-cache-dir \
+    django==3.2.10 \
+    psycopg2-binary \
+    langchain \
     slack-sdk \
     dialpad-python-sdk \
     requests-oauthlib
 
-# Copy new integration files
+# Create necessary directories
+RUN mkdir -p /opt/maxkb/app/apps/integrations \
+    /opt/maxkb/app/apps/shipping \
+    /var/lib/postgresql/data \
+    /opt/maxkb/app/sandbox/python-packages
+
+# Copy application code
 COPY ./apps/integrations /opt/maxkb/app/apps/integrations/
 COPY ./apps/shipping /opt/maxkb/app/apps/shipping/
+COPY ./main.py /opt/maxkb/app/main.py
 
 # Create entrypoint.sh file directly
 RUN echo '#!/bin/bash\n\
@@ -32,26 +50,14 @@ log_message() {\n\
   echo "[$(date +"%Y-%m-%d %H:%M:%S")] $1"\n\
 }\n\
 \n\
-# Initialize directories if they do not exist\n\
-log_message "Initializing directories..."\n\
-mkdir -p /var/lib/postgresql/data\n\
-mkdir -p /opt/maxkb/app/sandbox/python-packages\n\
-\n\
-# Run database migrations\n\
-log_message "Running database migrations..."\n\
-python /opt/maxkb/app/main.py upgrade_db\n\
-\n\
-# Collect static files\n\
-log_message "Collecting static files..."\n\
-python /opt/maxkb/app/main.py collect_static\n\
-\n\
-# Start the application\n\
 log_message "Starting AutoMaxKB application..."\n\
-exec python /opt/maxkb/app/main.py start all "$@"\n\
+\n\
+# Run your application\n\
+python /opt/maxkb/app/main.py start all "$@"\n\
 ' > /opt/maxkb/entrypoint.sh && \
     chmod +x /opt/maxkb/entrypoint.sh
 
-# Expose the port that MaxKB runs on
+# Expose the port
 EXPOSE 8080
 
 # Set the entrypoint script
